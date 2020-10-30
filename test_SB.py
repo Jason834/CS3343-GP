@@ -30,8 +30,8 @@ def test_frequent_items_are_found_correctly(mocker):
     sb_fixture = SB(data, support, confidence)
 
     sb_fixture.run()
-    expected_result = [ItemsOccurrence("b", 2), ItemsOccurrence("a", 2)]
-    assert sb_fixture.frequent_items
+    expected_result = [ItemsOccurrence(set(["a"]), 2), ItemsOccurrence(set(["b"]), 2)]
+    assert collections.Counter(expected_result)==collections.Counter(sb_fixture.frequent_items)
 
 
 def test_rules_with_required_confidence_are_selected_correctly(mocker):

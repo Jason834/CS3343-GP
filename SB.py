@@ -1,4 +1,3 @@
-
 class AssociationRule:
     def __init__(self,left,right,confidence=0,interest=None):
         self.left=left
@@ -14,13 +13,21 @@ class AssociationRule:
 
     def __eq__(self, o: object) -> bool:
         return self.left==o.left and self.right==o.right and self.confidence==o.confidence and self.interest==o.interest
+
     def __hash__(self) -> int:
         return hash(list(self.left)[0]+list(self.right)[0])
+
 class ItemsOccurrence:
     def __init__(self,items,occurrence):
         self.items=items
         self.size=len(self.items)
         self.occurrence=occurrence
+
+    def __eq__(self, o: object) -> bool:
+        return (self.items==o.items and self.size==o.size) and self.occurrence==o.occurrence
+
+    def __hash__(self) -> int:
+        return hash(list(self.items)[0])
 
 class SB:
     def __init__(self,raw_data,support,confidence) -> None:
@@ -102,6 +109,13 @@ class SB:
             self.find_all_subset(Memory, remaining,
                             used_items_set.union([each]), expected_size)
 
+    def get_recommendation(self,result_interest,top=10):
+        count=0
+        for each in result_interest:
+            if count>top:
+                break
+            print(f"If you buy {list(each.left)[0]}, you will probably buy {list(each.right)[0]}")
+            count+=1        
 
     def run(self):
         bottom_line = int(self.support*len(self.raw_data))
@@ -118,8 +132,11 @@ class SB:
             
 
         # find interest
-        self.result_interest = self.find_interest(self.selected_rules, self.raw_data)
+        self.find_interest(self.selected_rules, self.raw_data)
         [print(each) for each in self.selected_rules]
+        
+        print()
+        self.get_recommendation(self.selected_rules)
 
 def main():
     data = [{"Bread", "Milk"},
