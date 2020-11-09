@@ -1,3 +1,4 @@
+package SB;
 import java.util.*;
 public class RuleGenerator {
 	//List<List <String>> raw_data;

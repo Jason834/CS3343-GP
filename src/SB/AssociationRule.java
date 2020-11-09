@@ -1,4 +1,4 @@
-
+package SB;
 import java.util.Set;
 public class AssociationRule {
 	double confidence,interest;

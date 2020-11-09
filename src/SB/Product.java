@@ -1,4 +1,4 @@
-
+package SB;
 public class Product {
 
 	String name,company;
