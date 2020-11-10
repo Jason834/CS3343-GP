@@ -85,7 +85,7 @@ public class RuleGenerator {
 		
 			
 
-		public void run() {
+		public List<AssociationRule> run() {
 			int bottom_line=(int)(this.support*R.get_size());
 			System.out.print("bottom line= "+ bottom_line+"\n");
 			Itemset_Generator IG=new Itemset_Generator(R);
@@ -93,6 +93,7 @@ public class RuleGenerator {
 			List<AssociationRule> selected_rules= find_confident_rule(frequent_items,confidence);
 			find_interest(selected_rules);
 			get_recommendation(selected_rules);
+			return selected_rules;
 		}
 		
 }

@@ -1,4 +1,7 @@
 package SB;
+
+import java.util.List;
+
 public class Main {
 	
 	public static void main(String[] args)  {
@@ -20,7 +23,7 @@ public class Main {
 		Record R=new Record(input);
 		//Record R= new Record("Record.csv");        //input by file
 		RuleGenerator process = new RuleGenerator(R,support,confidence);
-		process.run();
+		List<AssociationRule>resultant_rules=process.run();
 		
 		
 	}
