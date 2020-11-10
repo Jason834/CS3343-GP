@@ -29,6 +29,33 @@ public class RecommendationTest {
 		
 		support    = 0.6;
 		confidence = 0.8;	
+		String text = "Bread";
+		Set<String> set = new HashSet<String>(Arrays.asList(text.split(" ")));
+		text = "Milk";
+		Set<String> set1 = new HashSet<String>(Arrays.asList(text.split(" ")));
+		AssociationRule assRule01 = new AssociationRule(set,set1,confidence);
+		assRule01.set_interest(1);
+		
+		List<AssociationRule> result;
+		AssociationRule[] expected_result = {assRule01};
+		
+		String[][] input={ 
+		 		{"Bread", "Milk"},
+		 		{"Bread", "Diaper", "Beer", "Eggs"},
+		 		{"Milk", "Diaper", "Beer", "Coke"},
+			};
+		
+		Record R = new Record(input);
+
+		RuleGenerator process = new RuleGenerator(R,support,confidence);
+		result = process.run();
+		assertEquals(expected_result, expected_result);
+	}
+	@Test
+	public void test0002() {
+		
+		support    = 0.6;
+		confidence = 0.8;	
 		
 		List<AssociationRule> result;
 		
