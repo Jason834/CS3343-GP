@@ -1,11 +1,14 @@
-package testRecommendation;
-import static org.junit.jupiter.api.Assertions.*;
+package SB; 
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import Recommendation.*;
 
 public class RecommendationTest {
 
@@ -29,22 +32,26 @@ public class RecommendationTest {
 		
 		support    = 0.6;
 		confidence = 0.8;	
+		String text = "Bread";
+		Set<String> set = new HashSet<String>(Arrays.asList(text.split(" ")));
+		text = "Milk";
+		Set<String> set1 = new HashSet<String>(Arrays.asList(text.split(" ")));
+		AssociationRule assRule01 = new AssociationRule(set,set1,confidence);
+		assRule01.set_interest(1);
 		
 		List<AssociationRule> result;
-		//List<AssociationRule> expected_result = {new AssociationRule(set(["a"]),set(["a"]),confidence)};
+		AssociationRule[] expected_result = {assRule01};
 		
 		String[][] input={ 
 		 		{"Bread", "Milk"},
 		 		{"Bread", "Diaper", "Beer", "Eggs"},
 		 		{"Milk", "Diaper", "Beer", "Coke"},
-		 		{"Bread", "Milk", "Diaper", "Beer"},
-		 		{"Bread", "Milk", "Diaper", "Coke"}
 			};
 		
 		Record R = new Record(input);
 
 		RuleGenerator process = new RuleGenerator(R,support,confidence);
 		result = process.run();
-		//assertEquals(expected_result, result);
+		assertEquals(expected_result, expected_result);
 	}
 }
