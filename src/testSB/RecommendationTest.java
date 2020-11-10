@@ -1,11 +1,11 @@
-package testRecommendation;
+package testSB;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
+import java.util.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import Recommendation.*;
+import SB.*;
 
 public class RecommendationTest {
 
@@ -31,7 +31,6 @@ public class RecommendationTest {
 		confidence = 0.8;	
 		
 		List<AssociationRule> result;
-		//List<AssociationRule> expected_result = {new AssociationRule(set(["a"]),set(["a"]),confidence)};
 		
 		String[][] input={ 
 		 		{"Bread", "Milk"},
@@ -44,7 +43,20 @@ public class RecommendationTest {
 		Record R = new Record(input);
 
 		RuleGenerator process = new RuleGenerator(R,support,confidence);
-		result = process.run();
-		//assertEquals(expected_result, result);
+		List<AssociationRule>resultant_rules = process.run();
+		
+		Set<String> sample_set_L=new HashSet<String>();		
+		sample_set_L.addAll(Arrays.asList(new String[] {"Bread"}));
+		Set<String> sample_set_R=new HashSet<String>();  
+		sample_set_R.addAll(Arrays.asList(new String[] {"Milk"}));
+		AssociationRule expected_result = new AssociationRule(sample_set_L,sample_set_R,0);
+		expected_result.set_interest(1.0);
+		Boolean expected_rule_is_contained=false;
+		for(AssociationRule result_rule:resultant_rules)
+		{
+			if (result_rule.is_equal(expected_result))
+				expected_rule_is_contained=true;
+		}
+		assert(expected_rule_is_contained);
 	}
 }

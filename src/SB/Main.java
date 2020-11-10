@@ -24,7 +24,7 @@ public class Main {
 		//Record R= new Record("Record.csv");        //input by file
 		RuleGenerator process = new RuleGenerator(R,support,confidence);
 		List<AssociationRule>resultant_rules=process.run();
-		
+		System.out.println();
 		
 	}
 	

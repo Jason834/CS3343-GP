@@ -5,7 +5,7 @@ public class RuleGenerator {
 		double support;
 		double confidence;
 		Record R;
-		RuleGenerator(Record R,double support,double condfidence){
+		public RuleGenerator(Record R,double support,double condfidence){
 			
 			this.support=support;
 			this.R= R;

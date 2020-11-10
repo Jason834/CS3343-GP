@@ -21,7 +21,7 @@ public class Record {
 		this.size=raw_data.size();
 	}
 	
-	Record(String[][] input) {
+	public Record(String[][] input) {
 		List<List<String>> data = new ArrayList<>();
 		
 		for(int i=0;i<input.length;i++) {
