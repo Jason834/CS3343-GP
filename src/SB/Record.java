@@ -15,11 +15,11 @@ public class Record {
 	List<Product> Product_list;
 	private int size;
 
-	Record(List<List<String>> data){
-		this.raw_data=data;
-		all_items =get_all_items();
-		this.size=raw_data.size();
-	}
+//	Record(List<List<String>> data){
+//		this.raw_data=data;
+//		all_items =get_all_items();
+//		this.size=raw_data.size();
+//	}
 	
 	public Record(String[][] input) {
 		List<List<String>> data = new ArrayList<>();
@@ -32,16 +32,18 @@ public class Record {
 		all_items =get_all_items();
 		this.size=raw_data.size();
 	}
-	Record(String file_name){
-		try (Scanner scanner = new Scanner(new File(file_name));) {
-			 while (scanner.hasNextLine()) {
-			        raw_data.add(getRecordFromLine(scanner.nextLine()));
-			 }
-		} catch (FileNotFoundException e) {
-			System.out.print("cannot open file" + file_name +"\n");
-		}
-		
-	}
+	
+//	Record(String file_name){
+//		try (Scanner scanner = new Scanner(new File(file_name));) {
+//			 while (scanner.hasNextLine()) {
+//			        raw_data.add(getRecordFromLine(scanner.nextLine()));
+//			 }
+//		} catch (FileNotFoundException e) {
+//			System.out.print("cannot open file" + file_name +"\n");
+//		}
+//		
+//	}
+	
 	public List<String>get_all_items() {										//find all items in the list 
 		List<String> all_items=new ArrayList<>() ;
 		for(int i=0;i<raw_data.size();i++) {
