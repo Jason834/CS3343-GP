@@ -9,12 +9,14 @@ public class Itemset_Generator {
 	Itemset_Generator(Record R){
 		this.R=R;
 	}
-	public void print_all(Set<String> items) {
-		String[] temp = items.toArray(new String[0]);
-		for(int x=0;x<temp.length;x++) {
-			System.out.printf("%s ", temp[x]);								//print all string in the array
-		}
-	}
+	
+//	public void print_all(Set<String> items) {
+//		String[] temp = items.toArray(new String[0]);
+//		for(int x=0;x<temp.length;x++) {
+//			System.out.printf("%s ", temp[x]);								//print all string in the array
+//		}
+//	}
+	
 	public List <Item_subset>  find_frequent_itemset(int bottom_line) {
 		List <Item_subset>  result = new ArrayList<>();
 		//int max_size=get_max_size(raw_data);

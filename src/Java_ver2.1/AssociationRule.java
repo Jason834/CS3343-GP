@@ -13,4 +13,5 @@ public class AssociationRule {
 	void set_interest(double interest){
 		this.interest=interest;
 	}	
+
 }

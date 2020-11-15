@@ -30,6 +30,7 @@ public class Record {
 		all_items =get_all_items();
 		this.size=raw_data.size();
 	}
+	
 	Record(String file_name){
 		try (Scanner scanner = new Scanner(new File(file_name));) {
 			 while (scanner.hasNextLine()) {
@@ -61,6 +62,7 @@ public class Record {
 		}
 		return max;
 	}
+	
 	public int get_count(Set<String> target) {
 		int count=0;
 		for(int i=0;i<raw_data.size();i++) {
@@ -99,11 +101,11 @@ public class Record {
 		return this.size;
 	}
 	
-	public void print_all(){
-		for(int i=0;i<raw_data.size();i++) {
-			System.out.print(raw_data.get(i)+"\n");
-		}
-	}
+//	public void print_all(){
+//		for(int i=0;i<raw_data.size();i++) {
+//			System.out.print(raw_data.get(i)+"\n");
+//		}
+//	}
 	
 	private static List<String> getRecordFromLine(String line) {
 	    List<String> values = new ArrayList<String>();
