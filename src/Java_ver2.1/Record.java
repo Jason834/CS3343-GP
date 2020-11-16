@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Record {
 	
-	private List<List<String>>raw_data;
+	private List<List<String>>raw_data = new ArrayList<>();
 	private static List <String> all_items;
 	private int size;
 
