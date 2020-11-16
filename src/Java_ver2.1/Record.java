@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Record {
 	
-	private List<List<String>>raw_data;
+	private List<List<String>>raw_data = new ArrayList<>();
 	private static List <String> all_items;
 	private int size;
 
@@ -25,23 +25,45 @@ public class Record {
 		for(int i=0;i<input.length;i++) {
 			List<String> strings =  new ArrayList<String>(Arrays.asList(input[i]));
 			data.add(strings);
+		//	System.out.print(strings+"\n");
 		}
 		this.raw_data=data;
 		all_items =get_all_items();
 		this.size=raw_data.size();
-	} 
-	
+	}
 	Record(String file_name){
 		try (Scanner scanner = new Scanner(new File(file_name));) {
+			
 			 while (scanner.hasNextLine()) {
-			        raw_data.add(getRecordFromLine(scanner.nextLine()));
+				 	List<String> temp = getRecordFromLine(scanner.nextLine());
+				
+				 	this.raw_data.add(temp);
 			 }
+			all_items =get_all_items();
+			this.size=raw_data.size();
+		
 		} catch (FileNotFoundException e) {
 			System.out.print("cannot open file" + file_name +"\n");
 		}
 		
 	}
-	public List<String> get_all_items() {										//find all items in the list 
+	
+	
+	
+	private static List<String> getRecordFromLine(String line) {
+		//System.out.print(line+"\n");
+	    List<String> values = new ArrayList<String>();
+	    String[] data = line.split(",");
+	   // System.out.print(data.length+"\n");
+	    for(int i=1;i<data.length;i++) {
+	    	values.add(data[i]);
+	    }
+		//System.out.print(values+"\n");
+		return values;
+	}
+
+	
+	public List<String>get_all_items() {										//find all items in the list 
 		List<String> all_items=new ArrayList<>() ;
 		for(int i=0;i<raw_data.size();i++) {
 			for(int j=0;j<raw_data.get(i).size();j++) {
@@ -62,7 +84,6 @@ public class Record {
 		}
 		return max;
 	}
-	
 	public int get_count(Set<String> target) {
 		int count=0;
 		for(int i=0;i<raw_data.size();i++) {
@@ -80,8 +101,9 @@ public class Record {
 	        solution.add(new HashSet<>(current));
 	        return;
 	    }
-	    //Unsuccessful stop clause
-	    if (idx == superSet.size()) return;
+	    //unseccessful stop clause
+	    if (idx == superSet.size())
+	    	return;
 	    String x = superSet.get(idx);
 	    current.add(x);
 	    //"guess" x is in the subset
@@ -101,22 +123,13 @@ public class Record {
 		return this.size;
 	}
 	
-//	public void print_all(){
-//		for(int i=0;i<raw_data.size();i++) {
-//			System.out.print(raw_data.get(i)+"\n");
-//		}
-//	}
-	
-	private static List<String> getRecordFromLine(String line) {
-	    List<String> values = new ArrayList<String>();
-	    String[] data = line.split(",");
-	    for(int i=1;i<data.length;i++) {
-	    	values.add(data[i]);
-	    }
-		return values;
+	public void print_all(){
+		for(int i=0;i<raw_data.size();i++) {
+			System.out.print(raw_data.get(i)+"\n");
+		}
 	}
-
 	
+
 	public void add(List<String> input) {
 		raw_data.add(input);
 	}
