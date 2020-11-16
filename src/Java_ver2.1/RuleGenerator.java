@@ -4,6 +4,7 @@ public class RuleGenerator {
 	//List<List <String>> raw_data;
 		double support, confidence;
 		Record R;
+		
 		RuleGenerator(Record R,double support,double condfidence){
 			
 			this.support=support;
@@ -34,13 +35,13 @@ public class RuleGenerator {
 				}
 				for(int x=0;x<left_target.size();x++) {
 					Item_subset left_set = left_target.get(x);
-					//System.out.print("Seraching for: "+left_set.items+"\n");
+					//System.out.print("Searching for: "+left_set.items+"\n");
 					for(int y=0;y<right_target.size();y++) {	
 						Item_subset right_set = right_target.get(y);
 					//	System.out.print("Checking for: "+right_set.items+"\n");
 						if(right_set.items.containsAll(left_set.items)) {
 							double local_confidence;
-							//System.out.print(left_set.items+"left occurence= "+left_set.occurrence+"||"+right_set.items+"right occurence="+right_set.occurrence+"\n");
+							//System.out.print(left_set.items+"left occurrence = "+left_set.occurrence+"||"+right_set.items+"right occurrence="+right_set.occurrence+"\n");
 							local_confidence=(double)right_set.occurrence/(double)left_set.occurrence;
 							Set<String> right_temp= new HashSet<>(right_set.items);
 							right_temp.removeAll(left_set.items);
@@ -63,7 +64,7 @@ public class RuleGenerator {
 		public void find_interest(List <AssociationRule> selected_rules ) {
 			for(AssociationRule each : selected_rules) {
 				//AssociationRule each = selected_rules.get(i); 
-				int count=R.get_count(each.right);
+				int count = R.get_count(each.right);
 				double natural_occurrence = (double)count/(double)R.get_size();
 				each.set_interest( Math.abs(Math.round((double)each.confidence-natural_occurrence)));
 			}	

@@ -8,7 +8,7 @@ public class RecommandationSystem {
 	
 	
 	RecommandationSystem (String[][] input){
-		this.R=new Record(input);
+		this.R = new Record(input);
 	}
 	
 	RecommandationSystem(String filename){

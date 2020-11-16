@@ -41,7 +41,7 @@ public class Record {
 		}
 		
 	}
-	public List<String>get_all_items() {										//find all items in the list 
+	public List<String> get_all_items() {										//find all items in the list 
 		List<String> all_items=new ArrayList<>() ;
 		for(int i=0;i<raw_data.size();i++) {
 			for(int j=0;j<raw_data.get(i).size();j++) {
@@ -80,7 +80,7 @@ public class Record {
 	        solution.add(new HashSet<>(current));
 	        return;
 	    }
-	    //unseccessful stop clause
+	    //Unsuccessful stop clause
 	    if (idx == superSet.size()) return;
 	    String x = superSet.get(idx);
 	    current.add(x);
