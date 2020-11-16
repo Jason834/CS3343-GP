@@ -69,16 +69,16 @@ public class RuleGenerator {
 			}	
 		}
 		
-		public void show_rules( List <AssociationRule> result_interest) {
-			int top=30;
-			int count =0;
-			for(AssociationRule each:result_interest) {
-				if (count>top)
-					break;
-				System.out.print("If you buy "+each.left+" , you will probably buy "+each.right+" With interest "+each.interest +" \n");
-				count+=1;
-			}
-		}
+//		public void show_rules( List <AssociationRule> result_interest) {
+//			int top=30;
+//			int count =0;
+//			for(AssociationRule each:result_interest) {
+//				if (count>top)
+//					break;
+//				System.out.print("If you buy "+each.left+" , you will probably buy "+each.right+" With interest "+each.interest +" \n");
+//				count+=1;
+//			}
+//		}
 		
 			
 

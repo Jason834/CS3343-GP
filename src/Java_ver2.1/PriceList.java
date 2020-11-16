@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class PriceList {
+	
 	static HashMap<String,Integer> price_table = new HashMap<String,Integer>();
 	static String[][] input={{"Bread", "12"},
 	                   {"Diaper", "100"},

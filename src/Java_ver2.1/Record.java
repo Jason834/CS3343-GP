@@ -29,7 +29,7 @@ public class Record {
 		this.raw_data=data;
 		all_items =get_all_items();
 		this.size=raw_data.size();
-	}
+	} 
 	
 	Record(String file_name){
 		try (Scanner scanner = new Scanner(new File(file_name));) {

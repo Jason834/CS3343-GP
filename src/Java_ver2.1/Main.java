@@ -17,8 +17,8 @@ public class Main {
 		String[] user_input1={"0","Coke"};
 		String[] user_input2={"1","Coke"};
 		String[] user_input3={"2","Coke"};
-		RecommandationSystem RS = new RecommandationSystem(record);
-		//RecommandationSystem RS=new RecommandationSystem("record.csv");
+		//RecommandationSystem RS = new RecommandationSystem(record);
+		RecommandationSystem RS = new RecommandationSystem("/CS3343-GP/src/Java_ver2.1/dataset-refined.csv");
 		RS.recommand(user_input1);
 		RS.recommand(user_input2);
 		RS.recommand(user_input3);

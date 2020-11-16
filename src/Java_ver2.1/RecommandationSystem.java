@@ -11,13 +11,13 @@ public class RecommandationSystem {
 		this.R=new Record(input);
 	}
 	
-//	RecommandationSystem(String filename){
-//		this.R=new Record(filename);
-//	}
+	RecommandationSystem(String filename){
+		this.R = new Record(filename);
+	}
 	
 	public HashMap<String, Double> recommand(String[] input) {
 		
-		int member=Integer.parseInt(input[0]);
+		int member=Integer.parseInt(input[0]); 
 		HashMap<String, Double> recommandList = new HashMap<String, Double>();	
 		List<String> items=new ArrayList<>();
 		

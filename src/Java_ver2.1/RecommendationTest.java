@@ -11,7 +11,6 @@ public class RecommendationTest {
 
 //	private double support;
 //	private double confidence;
-	String[][] input;
     /**
      * Sets up the test fixture.
      * Called before every test case method.
@@ -199,7 +198,7 @@ public class RecommendationTest {
 		
 		HashMap<String, Double> expected = new HashMap<String, Double>();
 		
-		HashMap<String, Double> result = vip.get_recommandation(record, items);
+		HashMap<String, Double> result = vip.get_recommandation(record, items); 
 		
 		assertEquals(result,expected);
 	}
